@@ -4,7 +4,7 @@
   "main": "scripts/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "start": "node scripts/app.js",
     "heroku-postbuild": "cd ../my-biz-site && npm install && npm run build",
     "dev": "nodemon ."
   },
