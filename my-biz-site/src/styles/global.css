@@ -1,0 +1,63 @@
+/* רקע כללי */
+.bg-main {
+  background-color: #ffffff; /* לבן */
+}
+
+.bg-light {
+  background-color: #f4f4f4; /* אפור בהיר */
+}
+
+.bg-primary {
+  background-color: #1f3b73; /* כחול כהה */
+}
+
+.bg-accent {
+  background-color: #20c997; /* טורקיז */
+}
+
+.bg-orang {
+  background-color: #fc8f09 !important; /* כתום */
+}
+
+.bg-error {
+  background-color: #e74c3c; /* אדום */
+}
+
+.hover-bg-primary:hover {
+  background-color: #f4f4f4 !important; /* אפור בהיר */
+}
+.hover-bg-blue:hover {
+  background-color: #1f3b73 !important;
+  color: white !important; /* אפור בהיר */
+}
+
+/* טקסט */
+.text-main {
+  font-weight: bold !important; /* טקסט רגיל */
+  color: #333333 !important;
+}
+
+.text-muted {
+  color: #666666; /* טקסט משני */
+}
+
+.text-primary {
+  color: #1f3b73;
+  font-weight: bold !important; /* כותרות */
+}
+
+.text-accent {
+  color: #20c997; /* קישורים, הדגשות */
+}
+
+.text-orange {
+  color: #f7941d !important; /* כפתורים */
+}
+
+.text-error {
+  color: #e74c3c;
+}
+
+.rtl {
+  direction: rtl;
+}
