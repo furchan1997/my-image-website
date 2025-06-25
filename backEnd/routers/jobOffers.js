@@ -3,7 +3,7 @@ const router = express.Router();
 const { jobOffers, validateJobOffer } = require("../models/jobOffers");
 const checkAdminPassword = require("../middleware/checkAdminPassword");
 
-// יצירת הצעה חדשה על ידיי לקוח
+// יצירת הצעה חדשה על ידיי לקוחות
 router.post("/offers", async (req, res) => {
   const { error } = validateJobOffer(req.body);
 
