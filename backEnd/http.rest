@@ -1,0 +1,44 @@
+@local=http://localhost:3000
+
+###
+
+POST  {{local}}/api/admin/auth
+x-admin-password: Qweasd1234560$$$
+
+###
+
+GET  {{local}}/api/offers/admin/
+x-admin-password:123
+
+###
+
+GET {{local}}/api/offers/admin
+
+
+###
+
+
+POST  {{local}}/api/offers/
+Content-Type: application/json
+
+
+{
+  "fullName": "שמחה שלומי ",
+  "phone": "0521234567",
+  "websiteType": "landingPage",
+  "otherSiteType": "אתר מיוחד לעמותה",
+  "goalOfProject": "arketingAndBranding",
+  "otherGoleProject": "גיוס תרומות לעמותה",
+  "targetAudience": "general",
+  "features": "socialIntegration",
+  "exampleFavoriteSite": "https://www.wwe.com",
+  "budget": "5,000-10,000"
+}
+
+###
+
+DELETE  {{local}}/api/offers/admin
+
+###
+DELETE  {{local}}/api/offers/admin/6850af520d8c7a529bf9a8ff
+x-admin-password:123
