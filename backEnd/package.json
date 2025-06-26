@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "scripts/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd ../my-biz-site && npm install && npm run build",
     "start": "node scripts/app.js",
-    "heroku-postbuild": "cd ../my-biz-site && npm install && npm run build",
     "dev": "nodemon ."
   },
   "keywords": [],
