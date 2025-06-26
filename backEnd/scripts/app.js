@@ -4,12 +4,13 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
+const fs = require("fs");
 const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = process.env.PORT || 3000;
 
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
-const { log } = require("console");
+const { log, error } = require("console");
 
 app.use((req, res, next) => {
   console.log("INCOMING REQUEST TO:", req.url);
@@ -19,35 +20,46 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(cors());
 
-// API routes - חייבים לפני כל else routes
-app.use("/api/admin", adminRoute);
-app.use("/api/offers", jobOffersRoute);
+// API routes
+try {
+  app.use("/api/admin", adminRoute);
+} catch (err) {
+  console.error("Error in /api/admin:", err);
+}
 
-const dist = path.join(__dirname, "..", "..", "my-biz-site/dist");
+try {
+  app.use("/api/offers", jobOffersRoute);
+} catch (err) {
+  console.error("Error in /api/offers:", err);
+}
 
-// // הגדרת Express לשרת קבצים סטטיים מהתיקייה 'dist' של הפרונט
-// app.use(express.static(dist));
+const dist = path.join(__dirname, "..", "..", "my-biz-site", "dist");
 
-// // כל בקשה אחרת תשלח את קובץ ה-index.html (SPA)
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(dist, "index.html"));
-// });
+if (fs.existsSync(path.join(dist, "index.html"))) {
+  app.use(express.static(dist));
+  console.log("Registering catch-all route *");
 
-// טיפול ב־404 (לא נמצא) - אחרי כל הנתיבים
+  app.get(/^\/(?!api\/).*/, (req, res) => {
+    res.sendFile(path.join(dist, "index.html"));
+  });
+} else {
+  console.warn("⚠️ dist/index.html not found – skipping static serve");
+}
+
+// 404 - צריך להיות אחרי כל הנתיבים
 app.use((req, res, next) => {
   res.status(404).json({
     message: "העמוד לא נמצא",
   });
 });
 
-// טיפול בשגיאות שרת
+// טיפול בשגיאות
 app.use((err, req, res, next) => {
   console.error("SERVER ERROR", err);
   res.status(500).json({
     message: "שגיאת רשת",
   });
 });
-
 // אחרי כל הגדרת ה routes ו middleware
 function printRoutes() {
   if (!app._router) {

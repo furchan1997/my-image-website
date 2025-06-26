@@ -5,98 +5,101 @@ const checkAdminPassword = require("../middleware/checkAdminPassword");
 
 // יצירת הצעה חדשה על ידיי לקוחות
 router.post("/", async (req, res) => {
-  const { error } = validateJobOffer(req.body);
+  try {
+    const { error } = validateJobOffer(req.body);
 
-  if (error) {
-    res.status(400).json({
-      message: error.details[0].message,
-    });
-    return;
+    if (error) {
+      return res.status(400).json({
+        message: error.details[0].message,
+      });
+    }
+
+    const offer = await new jobOffers({ ...req.body }).save();
+    res.status(201).json({ offer });
+  } catch (err) {
+    console.error("POST / - Error:", err);
+    res.status(500).json({ message: "שגיאת שרת" });
   }
-
-  const offer = await new jobOffers({ ...req.body }).save();
-  res.status(201).json({
-    offer,
-  });
 });
 
 // קבלת כל הצעות העבודה
 router.get("/admin", checkAdminPassword, async (req, res) => {
-  const offers = await jobOffers.find({}, {});
+  try {
+    const offers = await jobOffers.find({}, {});
 
-  if (!offers) {
-    res.status(404).json({
-      message: "offers not found.",
+    if (!offers || offers.length === 0) {
+      return res.status(404).json({
+        message: "No offers found.",
+      });
+    }
+
+    res.status(200).json({
+      message: "The offers:",
+      data: offers,
     });
-    return;
+  } catch (err) {
+    console.error("GET /admin - Error:", err);
+    res.status(500).json({ message: "שגיאת שרת" });
   }
-
-  if (offers.length === 0) {
-    res.status(404).json({
-      message: "No offers yet",
-    });
-    return;
-  }
-
-  res.status(200).json({
-    message: "The offers:",
-    data: offers,
-  });
 });
 
 // קבלת הצעת עבודה ספציפית
 router.get("/admin/:id", checkAdminPassword, async (req, res) => {
-  const offer = await jobOffers.findOne({ _id: req.params.id });
+  try {
+    const offer = await jobOffers.findOne({ _id: req.params.id });
 
-  if (!offer) {
-    res.status(404).json({
-      message: "offer not found.",
+    if (!offer) {
+      return res.status(404).json({ message: "Offer not found." });
+    }
+
+    res.status(200).json({
+      message: "The offer:",
+      data: offer,
     });
-    return;
+  } catch (err) {
+    console.error("GET /admin/:id - Error:", err);
+    res.status(500).json({ message: "שגיאת שרת" });
   }
-
-  res.status(200).json({
-    message: "The offer:",
-    data: offer,
-  });
 });
 
 // מחיקת הצעת עבודה ספציפית
 router.delete("/admin/:id", checkAdminPassword, async (req, res) => {
-  const offer = await jobOffers.deleteOne({ _id: req.params.id });
+  try {
+    const offer = await jobOffers.deleteOne({ _id: req.params.id });
 
-  if (!offer) {
-    res.status(404).json({
-      message: "Offer not found.",
+    if (!offer || offer.deletedCount === 0) {
+      return res
+        .status(404)
+        .json({ message: "Offer not found or already deleted." });
+    }
+
+    res.status(200).json({
+      message: "Offer is deleted.",
+      data: offer,
     });
-    return;
+  } catch (err) {
+    console.error("DELETE /admin/:id - Error:", err);
+    res.status(500).json({ message: "שגיאת שרת" });
   }
-
-  if (offer.deletedCount === 0) {
-    res.status(400).json({
-      message: "Offer has already been deleted.",
-    });
-    return;
-  }
-
-  res.status(200).json({
-    message: "Offer is deleted.",
-    data: offer,
-  });
 });
 
 // מחיקת כל הצעות העבודה
 router.delete("/admin", checkAdminPassword, async (req, res) => {
-  const offers = await jobOffers.deleteMany({});
+  try {
+    const offers = await jobOffers.deleteMany({});
 
-  if (offers.deletedCount === 0) {
-    return res.status(404).json({ message: "No offer found." });
+    if (offers.deletedCount === 0) {
+      return res.status(404).json({ message: "No offers found." });
+    }
+
+    res.status(200).json({
+      message: "Offers are deleted:",
+      data: offers,
+    });
+  } catch (err) {
+    console.error("DELETE /admin - Error:", err);
+    res.status(500).json({ message: "שגיאת שרת" });
   }
-
-  res.status(200).json({
-    message: "Offers are delated:",
-    data: offers,
-  });
 });
 
 console.log("JobOffers router created");
