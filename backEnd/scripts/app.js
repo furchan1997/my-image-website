@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 3000;
 
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
-const { log, error } = require("console");
 
 app.use((req, res, next) => {
   console.log("INCOMING REQUEST TO:", req.url);
@@ -34,6 +33,7 @@ try {
 }
 
 const dist = path.join(__dirname, "..", "..", "my-biz-site", "dist");
+console.log(dist);
 
 if (fs.existsSync(path.join(dist, "index.html"))) {
   app.use(express.static(dist));
