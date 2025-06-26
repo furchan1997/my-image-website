@@ -4,7 +4,7 @@ const { jobOffers, validateJobOffer } = require("../models/jobOffers");
 const checkAdminPassword = require("../middleware/checkAdminPassword");
 
 // יצירת הצעה חדשה על ידיי לקוחות
-router.post("/offers", async (req, res) => {
+router.post("/", async (req, res) => {
   const { error } = validateJobOffer(req.body);
 
   if (error) {
@@ -21,7 +21,7 @@ router.post("/offers", async (req, res) => {
 });
 
 // קבלת כל הצעות העבודה
-router.get("/offers/admin", checkAdminPassword, async (req, res) => {
+router.get("/admin", checkAdminPassword, async (req, res) => {
   const offers = await jobOffers.find({}, {});
 
   if (!offers) {
@@ -45,7 +45,7 @@ router.get("/offers/admin", checkAdminPassword, async (req, res) => {
 });
 
 // קבלת הצעת עבודה ספציפית
-router.get("/offers/admin/:id", checkAdminPassword, async (req, res) => {
+router.get("/admin/:id", checkAdminPassword, async (req, res) => {
   const offer = await jobOffers.findOne({ _id: req.params.id });
 
   if (!offer) {
@@ -62,7 +62,7 @@ router.get("/offers/admin/:id", checkAdminPassword, async (req, res) => {
 });
 
 // מחיקת הצעת עבודה ספציפית
-router.delete("/offers/admin/:id", checkAdminPassword, async (req, res) => {
+router.delete("/admin/:id", checkAdminPassword, async (req, res) => {
   const offer = await jobOffers.deleteOne({ _id: req.params.id });
 
   if (!offer) {
@@ -86,7 +86,7 @@ router.delete("/offers/admin/:id", checkAdminPassword, async (req, res) => {
 });
 
 // מחיקת כל הצעות העבודה
-router.delete("/offers/admin", checkAdminPassword, async (req, res) => {
+router.delete("/admin", checkAdminPassword, async (req, res) => {
   const offers = await jobOffers.deleteMany({});
 
   if (offers.deletedCount === 0) {
@@ -98,5 +98,7 @@ router.delete("/offers/admin", checkAdminPassword, async (req, res) => {
     data: offers,
   });
 });
+
+console.log("JobOffers router created");
 
 module.exports = router;
