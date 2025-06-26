@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 3000;
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
 
+app.use((req, res, next) => {
+  console.log("INCOMING REQUEST TO:", req.url);
+  next();
+});
+
 app.use(express.json());
 app.use(cors());
 
