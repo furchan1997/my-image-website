@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node scripts/app.js",
-    "heroku-postbuild": "cd ../my-biz-site/index.html && npm install && npm run build",
+    "heroku-postbuild": "cd ../my-biz-site && npm install && npm run build",
     "dev": "nodemon ."
   },
   "keywords": [],
