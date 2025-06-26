@@ -32,18 +32,18 @@ try {
   console.error("Error in /api/offers:", err);
 }
 
-const dist = path.join(__dirname, "..", "..", "my-biz-site", "dist");
-console.log(dist);
+const dist = path.resolve(__dirname, "../../my-biz-site/dist");
+const indexPath = path.join(dist, "index.html");
 
-if (fs.existsSync(path.join(dist, "index.html"))) {
+console.log("Looking for index.html at:", indexPath);
+
+if (fs.existsSync(indexPath)) {
   app.use(express.static(dist));
-  console.log("Registering catch-all route *");
-
   app.get(/^\/(?!api\/).*/, (req, res) => {
-    res.sendFile(path.join(dist, "index.html"));
+    res.sendFile(indexPath);
   });
 } else {
-  console.warn("⚠️ dist/index.html not found – skipping static serve");
+  console.warn("⚠️ dist/index.html not found at", indexPath);
 }
 
 // 404 - צריך להיות אחרי כל הנתיבים
