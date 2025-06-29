@@ -1,7 +1,9 @@
 import axios from "axios";
 import configJson from "../../config.json";
 
-axios.defaults.baseURL = configJson.apiURL;
+const apiUrl = import.meta.env.VITE_API_URL;
+
+axios.defaults.baseURL = apiUrl;
 
 export function setDefaultCommonHeaders(header, value) {
   axios.defaults.headers.common[header] = value;
