@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = process.env.PORT;
+console.log("PORT from ENV:", PORT);
 
 app.get("/ping", (req, res) => {
   res.json({ message: "pong" });
