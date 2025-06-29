@@ -7,8 +7,8 @@ const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = process.env.PORT;
 console.log("PORT from ENV:", PORT);
 
-app.get("/ping", (req, res) => {
-  res.json({ message: "pong" });
+app.get("/", (req, res) => {
+  res.json({ message: "API is up and running!" });
 });
 
 const jobOffersRoute = require("../routers/jobOffers");
