@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = process.env.PORT;
-console.log("PORT from ENV:", PORT);
+console.log("Server is starting with latest code");
 
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
@@ -44,10 +44,6 @@ app.use((err, req, res, next) => {
     message: "שגיאת רשת",
   });
 });
-
-if (!PORT) {
-  throw new Error("Missing PORT environment variable");
-}
 
 async function connect() {
   try {
