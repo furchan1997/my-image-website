@@ -1,4 +1,4 @@
-@local=http://localhost:3000
+@local=https://my-image-website-production.up.railway.app
 
 ###
 

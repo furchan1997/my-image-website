@@ -6,6 +6,12 @@ const cors = require("cors");
 const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = process.env.PORT || 8080;
 
+console.log("PORT from env:", process.env.PORT);
+
+app.get("/ping", (req, res) => {
+  res.json({ message: "pong" });
+});
+
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
 
