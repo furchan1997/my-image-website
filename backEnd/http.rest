@@ -12,7 +12,7 @@ x-admin-password:123
 
 ###
 
-GET {{local}}/api/offers/admin
+GET {{local}}/ping
 
 
 ###
