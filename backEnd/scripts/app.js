@@ -7,18 +7,16 @@ const URL = process.env.CONNECTION_STRING_ATLAS;
 const PORT = process.env.PORT;
 console.log("Server is starting with latest code");
 
-app.get(
-  ("/ping",
-  (req, res) => {
-    res.json;
-  })
-);
-
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // לפחות לשלב בדיקות
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 app.get("/", (req, res) => {
   res.json({ message: "API is up and running!" });
