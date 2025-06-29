@@ -24,8 +24,11 @@ router.post("/", async (req, res) => {
 
 // קבלת כל הצעות העבודה
 router.get("/admin", checkAdminPassword, async (req, res) => {
+  console.log("Received GET request on /api/offers");
+
   try {
     const offers = await jobOffers.find({}, {});
+    console.log("Received GET request on /api/offers");
 
     if (!offers || offers.length === 0) {
       return res.status(404).json({

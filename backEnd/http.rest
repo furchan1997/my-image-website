@@ -8,7 +8,7 @@ x-admin-password: Qweasd1234560$$$
 ###
 
 GET  {{local}}/api/offers/admin/
-x-admin-password:123
+x-admin-password:Qweasd1234560
 
 ###
 
