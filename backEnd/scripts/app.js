@@ -45,6 +45,10 @@ app.use((err, req, res, next) => {
   });
 });
 
+if (!PORT) {
+  throw new Error("Missing PORT environment variable");
+}
+
 async function connect() {
   try {
     await mongoose.connect(URL);
