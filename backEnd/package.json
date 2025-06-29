@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "scripts/app.js",
   "scripts": {
-    "build": "cd ../my-biz-site && npm install && npm run build",
-    "start": "node scripts/app.js",
-    "dev": "nodemon ."
+    "start": "node scripts/app.js"
   },
   "keywords": [],
   "author": "",

@@ -11,10 +11,10 @@ const PORT = process.env.PORT || 3000;
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
 
-app.use((req, res, next) => {
-  console.log("INCOMING REQUEST TO:", req.url);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("INCOMING REQUEST TO:", req.url);
+//   next();
+// });
 
 app.use(express.json());
 app.use(cors());
@@ -32,19 +32,19 @@ try {
   console.error("Error in /api/offers:", err);
 }
 
-const dist = path.resolve(__dirname, "../../my-biz-site/dist");
-const indexPath = path.join(dist, "index.html");
+// const dist = path.resolve(__dirname, "../../my-biz-site/dist");
+// const indexPath = path.join(dist, "index.html");
 
-console.log("Looking for index.html at:", indexPath);
+// console.log("Looking for index.html at:", indexPath);
 
-if (fs.existsSync(indexPath)) {
-  app.use(express.static(dist));
-  app.get(/^\/(?!api\/).*/, (req, res) => {
-    res.sendFile(indexPath);
-  });
-} else {
-  console.warn("⚠️ dist/index.html not found at", indexPath);
-}
+// if (fs.existsSync(indexPath)) {
+//   app.use(express.static(dist));
+//   app.get(/^\/(?!api\/).*/, (req, res) => {
+//     res.sendFile(indexPath);
+//   });
+// } else {
+//   console.warn("⚠️ dist/index.html not found at", indexPath);
+// }
 
 // 404 - צריך להיות אחרי כל הנתיבים
 app.use((req, res, next) => {
@@ -61,26 +61,26 @@ app.use((err, req, res, next) => {
   });
 });
 // אחרי כל הגדרת ה routes ו middleware
-function printRoutes() {
-  if (!app._router) {
-    console.log("No routes defined yet.");
-    return;
-  }
+// function printRoutes() {
+//   if (!app._router) {
+//     console.log("No routes defined yet.");
+//     return;
+//   }
 
-  app._router.stack.forEach((middleware) => {
-    if (middleware.route) {
-      // routes registered directly on the app
-      console.log(middleware.route.path);
-    } else if (middleware.name === "router" && middleware.handle.stack) {
-      // router middleware
-      middleware.handle.stack.forEach((handler) => {
-        if (handler.route) {
-          console.log(handler.route.path);
-        }
-      });
-    }
-  });
-}
+//   app._router.stack.forEach((middleware) => {
+//     if (middleware.route) {
+//       // routes registered directly on the app
+//       console.log(middleware.route.path);
+//     } else if (middleware.name === "router" && middleware.handle.stack) {
+//       // router middleware
+//       middleware.handle.stack.forEach((handler) => {
+//         if (handler.route) {
+//           console.log(handler.route.path);
+//         }
+//       });
+//     }
+//   });
+// }
 
 async function connect() {
   try {
@@ -88,7 +88,7 @@ async function connect() {
     console.log("CONNECTED TO MONGO DB");
     app.listen(PORT, () => {
       console.log("CONNECTED TO SERVER:", PORT);
-      printRoutes();
+      // printRoutes();
     });
   } catch (err) {
     console.error("Connection error:", err);
