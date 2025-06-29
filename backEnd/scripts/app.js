@@ -6,7 +6,7 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 const URL = process.env.CONNECTION_STRING_ATLAS;
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 const jobOffersRoute = require("../routers/jobOffers");
 const adminRoute = require("../routers/adminAuth");
