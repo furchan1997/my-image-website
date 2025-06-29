@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const URL = process.env.CONNECTION_STRING_ATLAS;
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 console.log("Server is starting with latest code");
 
 const jobOffersRoute = require("../routers/jobOffers");
