@@ -6,17 +6,20 @@ function Hero() {
     <div id="hero">
       <Logo fontSize={"1"} />
       <h2 className="text-secondary">
-        היי, אני אריאל בן אור 👋
-        <br /> מפתח אתרים ואפליקציות שעוזר לעסקים לבלוט ברשת
+        היי, שמי אריאל בן אור 👋
+        <br />
+        מפתח אתרים ואפליקציות שמייצר תוצאות לעסקים
       </h2>
       <p className="text-muted">
-        בונה אתרים מרשימים, מהירים ורספונסיביים שמביאים לקוחות.
+        אני עוזר לעסקים לבלוט ברשת בעזרת אתרים מעוצבים, מהירים, ומותאמים לנייד –
+        שמביאים יותר לקוחות ומגדילים מכירות.
       </p>
       <div className="d-flex justify-content-center">
         <button className="btn text-muted bg-orang hover-bg-blue w-50 text-center fw-bold">
-          דברו איתי
+          צרו קשר 🚀
         </button>
       </div>
+
       <hr />
     </div>
   );

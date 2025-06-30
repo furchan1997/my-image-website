@@ -109,13 +109,16 @@ function CreateOffer() {
 
   return (
     <div id="form">
-      <h2 className="fs-1 p-3 fw-bold text-primary">טופס היכרות קצר</h2>
+      <h2 className="fs-1 p-3 fw-bold text-primary">
+        טופס קצר להיכרות והבנת הצרכים
+      </h2>
       <p className="fs-5 fw-bold text-orange">
-        אנא מלא את הפרטים עבור הבנת הצרכים והדרישות שלך ואחזור אלייך עם הצעת
-        מחיר משתלמת
+        מלא/י את הפרטים ונבין יחד איך לבנות לך את האתר או האפליקציה שמתאימים
+        בדיוק לצרכים שלך. אשלח לך הצעת מחיר משתלמת בזמן קצר.
       </p>
       <strong>
-        השדה המסומן ב <span className="text-danger ms-1">*</span> הינו שדה חובה.
+        שדות המסומנים בכוכבית <span className="text-danger ms-1">(*)</span> הם
+        שדות חובה.
       </strong>
       <form
         className="d-flex flex-column gap-3 mt-5"
@@ -145,7 +148,7 @@ function CreateOffer() {
 
         <SelectComponent
           requried
-          label={"סוג אתר"}
+          label={`בחר/י את סוג אתר או אפליקציה`}
           name="websiteType"
           value={form.values.websiteType}
           onChange={form.handleChange}
@@ -154,7 +157,7 @@ function CreateOffer() {
         />
 
         <Input
-          lable={"אחר, אנא פרט"}
+          lable={"אחר או פרט/י"}
           inputType={"text"}
           name={"otherSiteType"}
           id={"otherSiteType"}
@@ -164,7 +167,7 @@ function CreateOffer() {
 
         <SelectComponent
           requried
-          label={"מטרת הפרויקט"}
+          label={"מה המטרה המרכזית של הפרויקט?"}
           name={"goalOfProject"}
           value={form.values.goalOfProject}
           onChange={form.handleChange}
@@ -182,7 +185,8 @@ function CreateOffer() {
         />
 
         <label className="form-label fw-bold">
-          מי הם קהלי היעד שלך? <span className="text-danger ms-1">*</span>
+          בחר/י את הקהלים שאליהם מכוון האתר או האפליקציה שלך{" "}
+          <span className="text-danger ms-1">*</span>
         </label>
 
         {form.touched.targetAudience && form.errors.targetAudience && (
@@ -208,7 +212,7 @@ function CreateOffer() {
         />
 
         <label className="form-label fw-bold">
-          תכונות ופיצ'רים שחשובים לך?{" "}
+          איזה תכונות או פונקציות חשובות לך שיהיו באתר?
           <span className="text-danger ms-1">*</span>
         </label>
         {form.touched.features && form.errors.features && (
@@ -233,7 +237,7 @@ function CreateOffer() {
 
         <SelectComponent
           requried
-          label={"מחיר משוער"}
+          label={"תקציב משוער לפרויקט?"}
           name={"budget"}
           value={form.values.budget}
           onChange={form.handleChange}
@@ -242,7 +246,7 @@ function CreateOffer() {
         />
 
         <Input
-          lable={`האם יש לך דוגמאות לאתרים או אפליקציות שאתה אוהב את העיצוב שלהם?`}
+          lable={`דוגמאות לאתרים או אפליקציות שאהבת את העיצוב שלהם (אם יש)?`}
           inputType={"text"}
           name={"exampleFavoriteSite"}
           id={"exampleFavoriteSite"}
@@ -264,10 +268,10 @@ function CreateOffer() {
           </div>
 
           <button
-            className="btn text-muted bg-orang hover-bg-blue w-50 text-center fw-bold"
+            className="btn send-offer-btn text-muted bg-orang hover-bg-blue text-center fw-bold"
             type="submit"
           >
-            שלח הצעה
+            שלח/י ונחזור אליך עם הצעה
           </button>
         </div>
       </form>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -6,7 +7,6 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import MyOffers from "./pages/MyOffers";
-
 import SignIn from "./pages/admin/signin";
 import ClientOffers from "./pages/admin/ClientOffers";
 import CreateOffer from "./pages/CreateOffer";
@@ -19,7 +19,7 @@ function PublicSite() {
       </header>
       <main
         style={{ marginTop: "90px", marginBottom: "130px" }}
-        className="d-flex flex-column justify-content-center align-items-center text-center w-75 mx-auto"
+        className="d-flex flex-column justify-content-center align-items-center text-center p-4 mx-auto"
       >
         <Hero />
         <About />
@@ -28,7 +28,7 @@ function PublicSite() {
         <MyOffers />
         <CreateOffer />
       </main>
-      <footer>  
+      <footer>
         <Footer />
       </footer>
     </div>
@@ -36,6 +36,18 @@ function PublicSite() {
 }
 
 function App() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.userway.org/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    // נקיון הסקריפט כשהקומפוננטה מתפרקת
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <Routes>
       {/* אתר ציבורי */}
