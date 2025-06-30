@@ -74,7 +74,11 @@
 }
 
 .send-offer-btn {
-  width: 25% !important;
+  width: 50% !important;
+}
+
+.width-for-elements {
+  width: 50%;
 }
 @media (max-width: 517px) {
   .send-offer-btn {
@@ -88,5 +92,9 @@
     z-index: 99999 !important;
     opacity: 1 !important;
     cursor: pointer;
+  }
+
+  .width-for-elements {
+    width: 100%;
   }
 }

@@ -108,7 +108,7 @@ function CreateOffer() {
   });
 
   return (
-    <div id="form">
+    <div id="form" className="width-for-elements">
       <h2 className="fs-1 p-3 fw-bold text-primary">
         טופס קצר להיכרות והבנת הצרכים
       </h2>
@@ -231,7 +231,7 @@ function CreateOffer() {
             form.values.features.includes(opt.value)
           )}
           options={entriesOpt(features)}
-          menuPlacement="bottom"
+          menuPlacement="top"
           maxMenuHeight={300}
         />
 
