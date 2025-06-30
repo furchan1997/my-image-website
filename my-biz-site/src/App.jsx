@@ -28,7 +28,7 @@ function PublicSite() {
         <MyOffers />
         <CreateOffer />
       </main>
-      <footer>
+      <footer>  
         <Footer />
       </footer>
     </div>

@@ -109,9 +109,11 @@ function CreateOffer() {
 
   return (
     <div id="form">
-      <h2 className="p-4 fw-bold text-primary">
-        טופס היכרות לקוח עבור הצעת מחיר ועבודה
-      </h2>
+      <h2 className="fs-1 p-3 fw-bold text-primary">טופס היכרות קצר</h2>
+      <p className="fs-5 fw-bold text-orange">
+        אנא מלא את הפרטים עבור הבנת הצרכים והדרישות שלך ואחזור אלייך עם הצעת
+        מחיר משתלמת
+      </p>
       <strong>
         השדה המסומן ב <span className="text-danger ms-1">*</span> הינו שדה חובה.
       </strong>
@@ -179,7 +181,10 @@ function CreateOffer() {
           error={form.touched.otherGoleProject && form.errors.otherGoleProject}
         />
 
-        <label className="form-label fw-bold">מי הם קהלי היעד שלך?</label>
+        <label className="form-label fw-bold">
+          מי הם קהלי היעד שלך? <span className="text-danger ms-1">*</span>
+        </label>
+
         {form.touched.targetAudience && form.errors.targetAudience && (
           <div className="text-danger">{form.errors.targetAudience}</div>
         )}
@@ -203,7 +208,8 @@ function CreateOffer() {
         />
 
         <label className="form-label fw-bold">
-          תכונות ופיצ'רים שחשובים לך?
+          תכונות ופיצ'רים שחשובים לך?{" "}
+          <span className="text-danger ms-1">*</span>
         </label>
         {form.touched.features && form.errors.features && (
           <div className="text-danger">{form.errors.features}</div>
@@ -258,7 +264,7 @@ function CreateOffer() {
           </div>
 
           <button
-            className="btn text-muted bg-orang hover-bg-blue w-25 text-center fw-bold"
+            className="btn text-muted bg-orang hover-bg-blue w-50 text-center fw-bold"
             type="submit"
           >
             שלח הצעה

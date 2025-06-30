@@ -13,7 +13,7 @@ function Hero() {
         בונה אתרים מרשימים, מהירים ורספונסיביים שמביאים לקוחות.
       </p>
       <div className="d-flex justify-content-center">
-        <button className="btn text-muted bg-orang hover-bg-blue w-25 text-center fw-bold">
+        <button className="btn text-muted bg-orang hover-bg-blue w-50 text-center fw-bold">
           דברו איתי
         </button>
       </div>
