@@ -24,13 +24,12 @@ router.post("/", async (req, res) => {
 
 // קבלת כל הצעות העבודה
 router.get("/admin", checkAdminPassword, async (req, res) => {
-    console.log("Got request to /admin");
+  console.log("Received GET request on /api/offers");
 
   try {
-    const offers = await jobOffers.find().sort({ createdAt: -1 });
-    console.log(offers);
-    let createdAt = await jobOffers.findOne({}, { createdAt: 1, id: 0 });
-    console.log(createdAt);
+    const offers = await jobOffers.find({}, {});
+    console.log("Received GET request on /api/offers");
+
     if (!offers || offers.length === 0) {
       return res.status(404).json({
         message: "No offers found.",
@@ -39,9 +38,10 @@ router.get("/admin", checkAdminPassword, async (req, res) => {
 
     res.status(200).json({
       message: "The offers:",
-      data: offers.map((offer) => offer.toJSON()),
+      data: offers,
     });
   } catch (err) {
+    console.error("GET /admin - Error:", err);
     res.status(500).json({ message: "שגיאת שרת" });
   }
 });
