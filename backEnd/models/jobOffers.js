@@ -98,10 +98,12 @@ const jobOffersSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get: (val) => val.toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" }), // מציג את התאריך בפורמט מקומי
-    set: (val) => new Date(val), // מבצע המרה בעת שמירת התאריך
+    get: (val) => val.toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" }),
   },
 });
+
+jobOffersSchema.set("toJSON", { getters: true });
+jobOffersSchema.set("toObject", { getters: true });
 
 const jobOffers = mongoose.model("JobOffer", jobOffersSchema, "jobOffers");
 

@@ -23,7 +23,7 @@ Content-Type: application/json
 
 
 {
-  "fullName": "שמחה 5 אברהם ",
+  "fullName": "שמחה 7  אברהם ",
   "phone": "0521234567",
   "websiteType": "landingPage",
   "otherSiteType": "אתר מיוחד לעמותה",
