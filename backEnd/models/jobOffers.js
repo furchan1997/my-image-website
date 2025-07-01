@@ -98,7 +98,7 @@ const jobOffersSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get: (val) => val.toLocaleString(), // מציג את התאריך בפורמט מקומי
+    get: (val) => val.toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" }), // מציג את התאריך בפורמט מקומי
     set: (val) => new Date(val), // מבצע המרה בעת שמירת התאריך
   },
 });
