@@ -12,17 +12,21 @@ function Offers({
   features,
   exampleFavoriteSite,
   budget,
+  createdAt,
   deleteOffer = () => {},
 }) {
   return (
     <div className="container my-4">
       <div className="card shadow-sm">
-        <div className="card-header bg-primary text-white d-flex justify-content-between">
+        <div className="card-header bg-primary text-white d-flex flex-column flex-md-row justify-content-between">
+          <p>
+            <span className="fw-bold">ID: </span>
+            {id}
+          </p>
           <h5 className="mb-0">Job Offer from {fullName}</h5>
           <button className="btn btn-primary fw-bold" onClick={deleteOffer}>
             מחק
           </button>
-          <p>{id}</p>
         </div>
         <div className="card-body">
           <p>
@@ -60,6 +64,9 @@ function Offers({
           )}
           <p>
             <strong>💰 Budget:</strong> {budget}
+          </p>
+          <p>
+            <strong>createdAt:</strong> {createdAt}
           </p>
         </div>
       </div>

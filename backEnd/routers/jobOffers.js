@@ -27,7 +27,7 @@ router.get("/admin", checkAdminPassword, async (req, res) => {
   console.log("Received GET request on /api/offers");
 
   try {
-    const offers = await jobOffers.find({}, {});
+    const offers = await jobOffers.find({}, {}).sort({ createdAt: -1 });
     console.log("Received GET request on /api/offers");
 
     if (!offers || offers.length === 0) {

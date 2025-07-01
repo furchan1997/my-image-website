@@ -15,7 +15,8 @@ function ClientOffers() {
     await delateOffer(ID);
     await getJobOffers();
   };
-
+  console.log(offers.map((o) => ({ [o.fullName]: o.createdAt })));
+  // console.log(offers);
   return (
     <div>
       {offers?.length === 0
@@ -30,10 +31,11 @@ function ClientOffers() {
               otherSiteType={offer.otherSiteType}
               goalOfProject={offer.goalOfProject}
               otherGoleProject={offer.otherGoleProject}
-              targetAudience={offer.targetAudience}
-              features={offer.features}
+              targetAudience={offer.targetAudience.join(", ")}
+              features={offer.features.join(", ")}
               exampleFavoriteSite={offer.exampleFavoriteSite}
               budget={offer.budget}
+              createdAt={offer.createdAt}
               deleteOffer={() => handleDeleteClick(offer?._id)}
             />
           ))}

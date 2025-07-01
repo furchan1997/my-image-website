@@ -22,12 +22,6 @@ app.get("/", (req, res) => {
   res.json({ message: "API is up and running!" });
 });
 
-app.get("/ping", (req, res) => {
-  res.json({
-    message: "pong",
-  });
-});
-
 // API routes
 try {
   app.use("/api/admin", adminRoute);

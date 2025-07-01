@@ -23,14 +23,14 @@ Content-Type: application/json
 
 
 {
-  "fullName": "שמחה שלומי ",
+  "fullName": "שמחה 3 אברהם ",
   "phone": "0521234567",
   "websiteType": "landingPage",
   "otherSiteType": "אתר מיוחד לעמותה",
   "goalOfProject": "arketingAndBranding",
   "otherGoleProject": "גיוס תרומות לעמותה",
-  "targetAudience": "general",
-  "features": "socialIntegration",
+  "targetAudience": ["general"],
+  "features": ["socialIntegration"],
   "exampleFavoriteSite": "https://www.wwe.com",
   "budget": "5,000-10,000"
 }
