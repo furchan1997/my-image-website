@@ -15,9 +15,14 @@ function Hero() {
         שמביאים יותר לקוחות ומגדילים מכירות.
       </p>
       <div className="d-flex justify-content-center">
-        <button className="btn text-muted bg-orang hover-bg-blue w-50 text-center fw-bold">
+        <a
+          href="https://wa.me/972506595538"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn text-muted bg-orang hover-bg-blue w-50 text-center fw-bold"
+        >
           צרו קשר 🚀
-        </button>
+        </a>
       </div>
 
       <hr />

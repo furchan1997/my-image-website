@@ -2,7 +2,7 @@ import Card from "../components/Card";
 
 function Portfolio() {
   return (
-    <section id="portfolio" className="section">
+    <section id="portfolio">
       <h2 className="text-primary mb-4">עבודות נבחרות</h2>
       <div className="d-flex gap-5 flex-wrap justify-content-center">
         <Card
@@ -40,7 +40,7 @@ function Portfolio() {
           haveSite
         />
         <Card
-          title={`דך נחיתה לעסק`}
+          title={`דף נחיתה לעסק`}
           description={`דף הנחיתה הוא הפנים של העסק שלך ברשת.
 אני מפתח דפי נחיתה שמושכים את תשומת הלב, מבהירים את המסר שלך בצורה מדויקת, ומובילים את המבקר לפעולה – בין אם זה למלא טופס, להתקשר, או לרכוש.
 העבודה שלי מבטיחה שהדף יעבוד היטב בכל מכשיר, ייטען מהר, וייתן ללקוחות שלך חוויה נעימה ויעילה.`}

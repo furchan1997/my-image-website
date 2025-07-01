@@ -22,8 +22,8 @@ function CreateOffer() {
     validateOnBlur: true,
 
     initialValues: {
-      fullName: "ariel",
-      phone: "05044344323",
+      fullName: "",
+      phone: "",
       websiteType: [],
       otherSiteType: "",
       goalOfProject: [],
