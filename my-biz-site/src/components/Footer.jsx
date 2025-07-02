@@ -89,7 +89,7 @@ function Footer() {
           <span className="">שלחו וואטסאפ</span>
         </a>
         <NavLink
-          className={"text-orange fw-bold text-decoration-none"}
+          className={"text-orange text-decoration-none"}
           to={"/Accessibility"}
         >
           הצהרת נגישות
