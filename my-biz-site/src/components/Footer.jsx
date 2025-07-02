@@ -43,7 +43,7 @@ function Footer() {
 
           {/* קישור לדף הצהרת נגישות */}
           <NavLink
-            className="text-orange text-decoration-none"
+            className="text-orange text-decoration-none fw-bold"
             to="/Accessibility"
           >
             הצהרת נגישות
@@ -86,10 +86,10 @@ function Footer() {
           className="text-orange text-decoration-none d-flex align-items-center gap-1"
         >
           <i className="bi bi-whatsapp"></i>
-          <span>שלחו וואטסאפ</span>
+          <span className="">שלחו וואטסאפ</span>
         </a>
         <NavLink
-          className={"text-orange  text-decoration-none"}
+          className={"text-orange fw-bold text-decoration-none"}
           to={"/Accessibility"}
         >
           הצהרת נגישות
