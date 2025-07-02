@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../components/Logo";
+import { HashLink } from "react-router-hash-link";
 
 function Hero() {
   return (
@@ -15,14 +16,16 @@ function Hero() {
         שמביאים יותר לקוחות ומגדילים מכירות.
       </p>
       <div className="d-flex justify-content-center">
-        <a
-          href="https://wa.me/972506595538"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn text-muted bg-orang hover-bg-blue w-50 text-center fw-bold"
-        >
-          צרו קשר 🚀
-        </a>
+        <HashLink smooth to={"/#form"}>
+          <a
+            href="https://wa.me/972506595538"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn text-muted bg-orang hover-bg-blue text-center fw-bold"
+          >
+            מעוניין/ת באתר? בוא נתחיל 🚀
+          </a>
+        </HashLink>
       </div>
 
       <hr />

@@ -19,7 +19,7 @@ function PublicSite() {
       </header>
       <main
         style={{ marginTop: "90px", marginBottom: "130px" }}
-        className="d-flex flex-column justify-content-center align-items-center text-center p-4 mx-auto"
+        className="d-flex flex-column justify-content-center align-items-center text-center p-2 mx-auto"
       >
         <Hero />
         <About />
