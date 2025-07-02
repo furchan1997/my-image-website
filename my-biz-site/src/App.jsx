@@ -10,6 +10,7 @@ import MyOffers from "./pages/MyOffers";
 import SignIn from "./pages/admin/signin";
 import ClientOffers from "./pages/admin/ClientOffers";
 import CreateOffer from "./pages/CreateOffer";
+import Accessibility from "./pages/Accessibility";
 
 function PublicSite() {
   return (
@@ -27,6 +28,9 @@ function PublicSite() {
         <Portfolio />
         <MyOffers />
         <CreateOffer />
+        <Routes>
+          <Route path="/Accessibility" element={<Accessibility />} />
+        </Routes>
       </main>
       <footer>
         <Footer />
@@ -42,7 +46,6 @@ function App() {
     script.async = true;
     document.body.appendChild(script);
 
-    // נקיון הסקריפט כשהקומפוננטה מתפרקת
     return () => {
       document.body.removeChild(script);
     };
@@ -52,6 +55,8 @@ function App() {
     <Routes>
       {/* אתר ציבורי */}
       <Route path="/" element={<PublicSite />} />
+      <Route path="/Accessibility" element={<Accessibility />} />
+
       {/* אזור מנהל */}
       <Route path="/admin/sign-in" element={<SignIn />} />
       <Route path="/admin/offers" element={<ClientOffers />} />
